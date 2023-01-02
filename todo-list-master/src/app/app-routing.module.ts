@@ -4,8 +4,16 @@ import {TodoComponent} from './todo/todo.component';
 import {TaskAddComponent} from "./task-add/task-add.component";
 import {TaskViewComponent} from "./task-view/task-view.component";
 import {TaskEditComponent} from "./task-edit/task-edit.component";
+import { LoginComponentComponent } from './LoginComponent/login-component/login-component.component';
 
 const routes: Routes = [
+  
+  {
+  // Login component 
+     path: 'login',
+     component:LoginComponentComponent
+
+  },
   {
     // contains the whole todo list
     path: 'tasks',
