@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, NgForm} from '@angular/forms';
 import {TaskStorageService} from "../task-storage.service";
 import {Router} from '@angular/router';
 
@@ -13,12 +13,12 @@ export class TaskAddComponent {
   /**
    * Task title form field
    */
-  title = new FormControl('');
-
+  title :string ="";
+  note: string="";
   /**
    *  Task note form field
    */
-  note = new FormControl('');
+  
 
   constructor(private storage: TaskStorageService, private router: Router) {
   }
@@ -26,8 +26,16 @@ export class TaskAddComponent {
   /**
    * Create a task a redirect to the todo list
    */
-  createTask() {
-    this.storage.add(this.title.value, this.note.value);
+
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      return;
+    }
+     this.title = form.value.title;
+     this.note = form.value.note;
+
+    this.storage.add(this.title, this.note);
     this.router.navigate(['/tasks'])
+
   }
 }
