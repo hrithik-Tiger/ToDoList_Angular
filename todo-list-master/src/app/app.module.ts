@@ -9,6 +9,7 @@ import { TaskEditComponent } from './task-edit/task-edit.component';
 import { TaskViewComponent } from './task-view/task-view.component';
 import { TaskAddComponent } from './task-add/task-add.component';
 import { LoginComponentComponent } from './LoginComponent/login-component/login-component.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginComponentComponent } from './LoginComponent/login-component/login-
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
