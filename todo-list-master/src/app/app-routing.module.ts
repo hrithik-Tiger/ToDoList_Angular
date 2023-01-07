@@ -5,6 +5,7 @@ import {TaskAddComponent} from "./task-add/task-add.component";
 import {TaskViewComponent} from "./task-view/task-view.component";
 import {TaskEditComponent} from "./task-edit/task-edit.component";
 import { LoginComponentComponent } from './LoginComponent/login-component/login-component.component';
+import { AuthGuard } from './Authentication/auth.guard';
 
 const routes: Routes = [
   
@@ -17,31 +18,33 @@ const routes: Routes = [
   {
     // contains the whole todo list
     path: 'tasks',
-    component: TodoComponent
+    component: TodoComponent,
+    canActivate: [AuthGuard],
+
+    
   },
   {
     // display the form to add a new task
     path: 'tasks/add',
     component: TaskAddComponent,
-    data: {title: 'Add new task'}
+    data: {title: 'Add new task'},
+    canActivate: [AuthGuard]
   },
   {
     // display the form to add a new task
     path: 'tasks/:id',
     component: TaskViewComponent,
-    data: {title: 'Task to do'}
+    data: {title: 'Task to do'},
+    canActivate: [AuthGuard]
   },
   {
     // display the form to add a new task
     path: 'tasks/:id/edit',
     component: TaskEditComponent,
-    data: {title: 'Task edition'}
+    data: {title: 'Task edition'},
+    canActivate: [AuthGuard]
   },
-  // Always go on /tasks path
-  { path: '',
-    redirectTo: '/tasks',
-    pathMatch: 'full'
-  },
+ 
 ];
 
 @NgModule({
