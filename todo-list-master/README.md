@@ -6,6 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Run the application
 
+Download all dependencies
+
+> npm install
+
+
 Launch the server with th command
 > ng serve
 
