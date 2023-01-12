@@ -18,7 +18,7 @@ export class TaskAddComponent {
   /**
    *  Task note form field
    */
-  
+  errorMessage:string=""
 
   constructor(private storage: TaskStorageService, private router: Router) {
   }
@@ -27,15 +27,21 @@ export class TaskAddComponent {
    * Create a task a redirect to the todo list
    */
 
+
+
   onSubmit(form: NgForm) {
     if (!form.valid) {
-      return;
+      this.errorMessage = "Please Enter Task"
+      this.router.navigate(['/tasks/add'])
     }
+
+    else{
      this.title = form.value.title;
      this.note = form.value.note;
 
     this.storage.add(this.title, this.note);
     this.router.navigate(['/tasks'])
-
+    this.errorMessage = ""
   }
+}
 }

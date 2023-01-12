@@ -1,27 +1,29 @@
 <h2>Create a new task</h2>
 
+
 <form #AddForm="ngForm" (ngSubmit)="onSubmit(AddForm)" >
   <div class="form-group">
     <label for="taskTitle">Title</label>
     
     <input type="text" id="taskTitle" class="form-control" ngModel
-    name="title" required>
+    name="title" #title="ngModel" required>
 
   </div>
+  <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert" style="color: red;">
+    Title is required
+  </div> 
+ 
   <div class="form-group">
     <label for="taskNote">Note</label>
     <input type="text" id="taskNote" class="form-control"  ngModel
-    name="note"  required>
-    <!-- <div *ngIf="note.invalid && (note.dirty || note.touched)" class="alert">
-
-      <div 
-      *ngIf="note.error?.['required']"> Note is required
-    </div>
-    </div> -->
+    name="note" #note="ngModel" required>
+   
   </div>
-  
+  <div *ngIf="note.invalid && (note.dirty || note.touched)" class="alert" style="color: red;">
+    Note is required
+  </div> 
   <div class="form-group">
-    <button (click)="onSubmit()" type="submit" class="btn btn-primary" [disabled]="!AddForm.valid">Create</button>
+    <button (click)="onSubmit()" type="submit" class="btn btn-primary" [disabled]="!AddForm.valid" >Create</button>
     <button class="btn btn-light" [routerLink]="['/tasks']">Back</button>
   </div>
 </form>
